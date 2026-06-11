@@ -1,0 +1,18 @@
+{
+  "name": "scamguard-backend",
+  "version": "1.0.0",
+  "description": "ScamGuard browser extension backend: scam detection, community reports, UUID identity, daily API caps",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "migrate": "node scripts/migrate.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.5.2",
+    "pg": "^8.12.0"
+  }
+}
