@@ -5,6 +5,7 @@ const { rateLimitMiddleware } = require('./middleware/rateLimit');
 const reportsRouter = require('./routes/reports');
 const checkRouter = require('./routes/check');
 const userRouter = require('./routes/user');
+const configRouter = require('./routes/config');
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use('/api/v1', ipLimiter, userMiddleware, rateLimitMiddleware);
 app.use('/api/v1/reports', reportLimiter, reportsRouter);
 app.use('/api/v1/check', checkRouter);
 app.use('/api/v1/user', userRouter);
+app.use('/api/v1/config', configRouter);
 
 app.use((err, req, res, next) => {
   // Privacy: log the error only — never req.headers or req.query, which

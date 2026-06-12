@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScamGuard — Privacy Policy</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         max-width: 720px; margin: 0 auto; padding: 32px 20px; color: #1a2332; line-height: 1.6; }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  h2 { font-size: 18px; color: #1565c0; margin-top: 28px; }
+  .updated { color: #5a6675; font-size: 14px; margin-bottom: 24px; }
+  code { background: #eef3f9; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+  li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<h1>ScamGuard Privacy Policy</h1>
+<p class="updated">Last updated: June 12, 2026</p>
+
+<p>ScamGuard is a browser extension that helps you avoid scam websites. This
+policy describes exactly what data the extension sends to our servers, what we
+store, and what we never collect. Our backend is
+<a href="https://github.com/Strelzik/scamguard-backend">open source</a>, so
+every claim below can be verified in code.</p>
+
+<h2>What we collect</h2>
+<ul>
+  <li><strong>An anonymous ID.</strong> On install, the extension generates a
+  random identifier (a UUID) stored only in your browser. It is not derived
+  from, or linked to, your name, email, Google account, IP address, or any
+  other identity. It exists so we can enforce fair-use limits and credit your
+  contributions.</li>
+  <li><strong>Domain names you check.</strong> When the extension performs a
+  cloud check, it sends the <em>domain name</em> of the site (for example,
+  <code>example.com</code>) — never the full URL, never the page content, and
+  never your search terms or form data. Results are cached server-side
+  <em>per domain, not per user</em>: we do not keep a record of which user
+  checked which domain.</li>
+  <li><strong>Reports you choose to submit.</strong> If you report a site, we
+  store the domain, your verdict (scam / suspicious / looks legit), your
+  optional comment, and your anonymous ID. Comments are not displayed publicly;
+  they are used only for verifying reports.</li>
+</ul>
+
+<h2>What we never collect</h2>
+<ul>
+  <li>Your browsing history. There is no server-side record of which sites any
+  user has visited or checked.</li>
+  <li>Full URLs, page contents, keystrokes, form inputs, or credentials.</li>
+  <li>Your name, email address, or any account information — there are no
+  accounts.</li>
+  <li>Advertising identifiers. We do not sell or share personal data with
+  advertisers or data brokers, and we never will.</li>
+</ul>
+
+<h2>How data is used</h2>
+<ul>
+  <li>Domain checks are evaluated against threat databases (Google Safe
+  Browsing, urlscan.io), public domain-registration records, and aggregated
+  community reports, then returned to your browser.</li>
+  <li>Community reports contribute to a shared, aggregate trust signal for
+  each domain. Verified reports may earn the reporting user premium features,
+  credited to the anonymous ID.</li>
+  <li>We may publish or license <em>aggregated, non-identifying</em> threat
+  intelligence (for example, lists of domains flagged as scams). This never
+  includes anonymous IDs, comments, or any per-user information.</li>
+</ul>
+
+<h2>Third-party services</h2>
+<p>Cloud checks are processed by our backend hosted on Railway, which queries
+Google Safe Browsing, urlscan.io, and public RDAP registries server-side. The
+domain being checked is shared with those services as part of the lookup; your
+anonymous ID is not.</p>
+
+<h2>Data retention and deletion</h2>
+<ul>
+  <li>Cached check results expire automatically within 24 hours.</li>
+  <li>Reports are retained while they remain useful for community protection.</li>
+  <li><strong>You can erase everything at any time.</strong> The extension can
+  request deletion of all data tied to your anonymous ID — reports, credits,
+  and the ID itself. This is immediate and permanent.</li>
+</ul>
+
+<h2>Disputes</h2>
+<p>If you operate a website that you believe has been incorrectly flagged,
+contact us by opening an issue at
+<a href="https://github.com/Strelzik/scamguard-backend/issues">our public
+repository</a> and we will review the flag promptly.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the date above will be updated. Material changes
+will be noted in the extension's release notes.</p>
+
+</body>
+</html>
