@@ -18,15 +18,16 @@ app.use(express.json({ limit: '16kb' }));
 // UUIDs, so IP limits are the real backstop for upstream API quota, DB
 // write floods, and credit farming. Generous enough for legit use: a real
 // user browsing all day stays well under these.
+const { envInt } = require('./lib/config');
 const ipLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  limit: 300, // all /api traffic
+  limit: envInt('IP_LIMIT_PER_15MIN', 300), // all /api traffic
   standardHeaders: true,
   legacyHeaders: false,
 });
 const reportLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
-  limit: 20, // report submissions are rarer and abuse-sensitive
+  limit: envInt('IP_REPORT_POSTS_PER_HOUR', 20), // report submissions are rarer and abuse-sensitive
   standardHeaders: true,
   legacyHeaders: false,
   skip: (req) => req.method !== 'POST',

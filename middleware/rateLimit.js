@@ -1,6 +1,8 @@
 const pool = require('../db');
 
-const FREE_DAILY_CAP = 50;
+const { envInt } = require('../lib/config');
+
+const FREE_DAILY_CAP = envInt('FREE_DAILY_CAP', 50);
 
 function startOfTodayUtc() {
   const now = new Date();
