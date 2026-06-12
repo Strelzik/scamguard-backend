@@ -80,10 +80,15 @@ same domain everywhere, so subdomain rotation can't split community reports.
   has no user column. Never add logging that pairs the UUID header with the
   domain being checked — that would be a browsing-history database.
 - No server-side fetches of user-supplied domains (SSRF). The HTTPS signal
-  is the extension's job; it already knows how the page loaded.
-- `DELETE /api/user` supports right-to-erasure requests.
+  is the extension's job; it already knows how the page loaded. (RDAP
+  registration-age lookups go to rdap.org/registries, not the domain itself.)
+- `DELETE /api/v1/user` supports right-to-erasure requests.
+- Architectural rule: any "personal security dashboard" / per-user stats
+  feature must be built extension-side (`chrome.storage.local`). The server
+  must never hold per-user check history — that would break the public
+  "browsing history is not tracked" promise.
 
-`GET /api/check` response:
+`GET /api/v1/check` response:
 
 ```json
 {
