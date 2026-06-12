@@ -140,8 +140,9 @@ waze.setStyle(TableStyle([
 ]))
 el.append(waze)
 
-# ---- Pricing ----
-el.append(Paragraph("PRICING", S["h2"]))
+# ---- Pricing (kept together so tiers and their benefits never split
+# across a page break) ----
+pricing_block = [Paragraph("PRICING", S["h2"])]
 pricing = Table([
     [Paragraph("Free", S["tier"]), Paragraph("Premium", S["tier"]), Paragraph("Contributor", S["tier"])],
     [Paragraph("$0 forever", S["price"]), Paragraph("$3/mo", S["price"]), Paragraph("Earned", S["price"])],
@@ -169,13 +170,14 @@ pricing.setStyle(TableStyle([
     ("TOPPADDING", (0, 0), (-1, -1), 3), ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
     ("LINEAFTER", (0, 0), (1, -1), 0.5, HexColor("#d4dde8")),
 ]))
-el.append(pricing)
-el.append(Spacer(1, 4))
-el.append(Paragraph(
+pricing_block.append(pricing)
+pricing_block.append(Spacer(1, 4))
+pricing_block.append(Paragraph(
     "&#42; Premium Days are awarded for verified scam reports — confirmed against external threat "
     "databases or by human review — up to 4 days per month. "
     "&#8224; Dashboard statistics are computed and stored inside your browser only; they are never "
     "sent to our servers.", S["small"]))
+el.append(KeepTogether(pricing_block))
 
 # ---- FAQ ----
 el.append(Paragraph("COMMON QUESTIONS", S["h2"]))
